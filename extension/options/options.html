@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="optPageTitle">CookieCleaner — Options</title>
+  <link rel="stylesheet" href="../common/style.css">
+  <style>
+    body { max-width: 720px; margin: 0 auto; padding: 24px 16px 60px; }
+    header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+    header img { width: 40px; height: 40px; }
+    .mode-choice { display: flex; flex-direction: column; gap: 8px; }
+    #journalList { list-style: none; margin: 10px 0 0; padding: 0; }
+    #journalList li {
+      display: flex; justify-content: space-between;
+      padding: 6px 4px; border-bottom: 1px solid var(--border); font-size: 12.5px;
+    }
+    #leakResult, #pwdResult, #apiResult { margin-top: 8px; font-size: 13px; }
+    .field { margin: 12px 0; }
+    .field > .label-line { margin-bottom: 6px; font-weight: 600; font-size: 13px; }
+    .revoke-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 6px; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../icons/icon48.png" alt="">
+    <div>
+      <h1>CookieCleaner</h1>
+      <div class="muted" data-i18n="optSubtitle">Automatic cookie & session cleaner</div>
+    </div>
+  </header>
+
+  <!-- Mode -->
+  <div class="card">
+    <h2 data-i18n="optModeTitle">Cleaning mode</h2>
+    <div class="mode-choice">
+      <label>
+        <input type="radio" name="mode" value="list">
+        <span data-i18n="optModeList">Clean only the sites in my list</span>
+      </label>
+      <label>
+        <input type="radio" name="mode" value="all">
+        <span data-i18n="optModeAll">Clean everything except my whitelist</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Site list (list mode) -->
+  <div class="card" id="sitesCard">
+    <h2 data-i18n="optSitesTitle">Sites to clean</h2>
+    <p class="muted" data-i18n="optSitesHelp">Cookies, localStorage and IndexedDB of these domains (and their subdomains) will be wiped at each cleanup. You will be logged out of them.</p>
+    <div class="row">
+      <input type="text" id="siteInput" data-i18n-placeholder="optSitePlaceholder" placeholder="example.com">
+      <button id="addSite" data-i18n="optAdd">Add</button>
+    </div>
+    <div class="chips" id="siteChips"></div>
+    <div class="field">
+      <div class="label-line" data-i18n="optPresets">Quick presets</div>
+      <div class="chips" id="presetChips"></div>
+    </div>
+    <div class="field">
+      <div class="label-line" data-i18n="optRevokeTitle">Revoke server-side sessions</div>
+      <p class="muted" data-i18n="optRevokeHelp">Deleting a cookie locally does not always kill the session on the server. For your monitored sites, use these official "connected devices" pages to revoke everything.</p>
+      <div class="revoke-links" id="revokeLinks"></div>
+    </div>
+  </div>
+
+  <!-- Whitelist (all mode) -->
+  <div class="card" id="whitelistCard">
+    <h2 data-i18n="optWhitelistTitle">Whitelist (never cleaned)</h2>
+    <p class="muted" data-i18n="optWhitelistHelp">These domains keep their cookies and sessions.</p>
+    <div class="row">
+      <input type="text" id="whitelistInput" data-i18n-placeholder="optSitePlaceholder" placeholder="example.com">
+      <button id="addWhitelist" data-i18n="optAdd">Add</button>
+    </div>
+    <div class="chips" id="whitelistChips"></div>
+  </div>
+
+  <!-- Schedule -->
+  <div class="card">
+    <h2 data-i18n="optScheduleTitle">Schedule</h2>
+    <div class="field">
+      <div class="label-line" data-i18n="optInterval">Clean automatically every</div>
+      <select id="interval">
+        <option value="0" data-i18n="optIntervalOff">Disabled (manual only)</option>
+        <option value="30" data-i18n="optInterval30m">30 minutes</option>
+        <option value="60" data-i18n="optInterval1h">1 hour</option>
+        <option value="180" data-i18n="optInterval3h">3 hours</option>
+        <option value="360" data-i18n="optInterval6h">6 hours</option>
+        <option value="720" data-i18n="optInterval12h">12 hours</option>
+        <option value="1440" data-i18n="optInterval24h">24 hours</option>
+      </select>
+    </div>
+    <label>
+      <input type="checkbox" id="cleanOnStartup">
+      <span data-i18n="optStartup">Also clean when the browser starts</span>
+    </label>
+    <label style="margin-top:8px">
+      <input type="checkbox" id="cleanStorage">
+      <span data-i18n="optStorage">Also purge localStorage / IndexedDB (recommended — this is where Discord-style tokens live)</span>
+    </label>
+  </div>
+
+  <!-- Leak check -->
+  <div class="card">
+    <h2 data-i18n="optLeaksTitle">Data breach check</h2>
+
+    <div class="field">
+      <div class="label-line" data-i18n="optLeakEmailTitle">Has my email appeared in a breach?</div>
+      <div class="row">
+        <input type="email" id="leakEmail" placeholder="you@example.com">
+        <button id="checkEmail" data-i18n="optCheck">Check</button>
+      </div>
+      <p class="muted" data-i18n="optLeakEmailHelp">Without an API key this opens haveibeenpwned.com in a new tab. With a key (below), the check runs directly here.</p>
+      <div id="leakResult"></div>
+    </div>
+
+    <div class="field">
+      <div class="label-line" data-i18n="optLeakPwdTitle">Has this password leaked?</div>
+      <div class="row">
+        <input type="password" id="leakPwd" data-i18n-placeholder="optLeakPwdPlaceholder" placeholder="Password to test">
+        <button id="checkPwd" data-i18n="optCheck">Check</button>
+      </div>
+      <p class="muted" data-i18n="optLeakPwdHelp">Anonymous check (k-anonymity): only the first 5 characters of the SHA-1 hash are sent. The password never leaves your device.</p>
+      <div id="pwdResult"></div>
+    </div>
+
+    <div class="field">
+      <div class="label-line" data-i18n="optApiTitle">HIBP API key (optional)</div>
+      <div class="row">
+        <input type="password" id="hibpKey" data-i18n-placeholder="optApiPlaceholder" placeholder="hibp-api-key">
+        <button id="saveKey" class="secondary" data-i18n="optSave">Save</button>
+      </div>
+      <p class="muted">
+        <span data-i18n="optApiHelp">Stored locally only. Enables direct email checks.</span>
+        <a href="https://haveibeenpwned.com/API/Key" target="_blank" rel="noopener">haveibeenpwned.com/API/Key</a>
+      </p>
+      <div id="apiResult"></div>
+    </div>
+  </div>
+
+  <!-- Journal -->
+  <div class="card">
+    <h2 data-i18n="optJournalTitle">Cleanup log</h2>
+    <ul id="journalList"></ul>
+    <p class="muted" id="journalEmpty" data-i18n="optJournalEmpty">No cleanup yet.</p>
+    <button id="clearJournal" class="secondary" data-i18n="optJournalClear">Clear log</button>
+  </div>
+
+  <p class="muted" data-i18n="optDisclaimer">CookieCleaner reduces the time window during which a stolen cookie stays usable. It does not prevent theft itself: keep your system clean, use 2FA, and never run untrusted programs. Everything stays on your device — no telemetry, no server.</p>
+
+  <script src="../common/i18n.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

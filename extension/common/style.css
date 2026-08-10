@@ -1,0 +1,109 @@
+:root {
+  --bg: #14161b;
+  --panel: #1d2027;
+  --panel-2: #23262f;
+  --border: #2e323d;
+  --text: #e8eaf0;
+  --muted: #9aa1b0;
+  --accent: #e0a458;
+  --accent-dark: #b5773a;
+  --green: #2f9e63;
+  --red: #d05555;
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+h1, h2, h3 { margin: 0 0 8px; font-weight: 600; }
+h1 { font-size: 18px; }
+h2 { font-size: 15px; color: var(--accent); }
+p  { margin: 0 0 10px; }
+
+.muted { color: var(--muted); font-size: 12.5px; }
+
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 14px;
+}
+
+button {
+  background: var(--accent);
+  color: #1a1408;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+button:hover { background: var(--accent-dark); color: #fff; }
+button.secondary {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+button.secondary:hover { background: var(--border); }
+button:disabled { opacity: 0.5; cursor: default; }
+
+input[type="text"], input[type="email"], input[type="password"], select {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 13.5px;
+  width: 100%;
+}
+input:focus, select:focus { outline: 1px solid var(--accent); }
+
+label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+
+.row { display: flex; gap: 8px; align-items: center; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12.5px;
+}
+.chip .x {
+  cursor: pointer;
+  color: var(--muted);
+  font-weight: 700;
+  padding: 0 2px;
+}
+.chip .x:hover { color: var(--red); }
+
+.preset {
+  cursor: pointer;
+  background: transparent;
+  border: 1px dashed var(--border);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 12.5px;
+  font-weight: 500;
+}
+.preset:hover { border-color: var(--accent); color: var(--accent); background: transparent; }
+.preset.active { border-style: solid; border-color: var(--green); color: var(--green); }
+
+.ok { color: var(--green); }
+.warn { color: var(--red); }
+a { color: var(--accent); }

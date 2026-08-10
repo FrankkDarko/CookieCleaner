@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="../common/style.css">
+  <style>
+    body { width: 300px; padding: 14px; }
+    header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+    header img { width: 28px; height: 28px; }
+    .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .stat {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 10px; text-align: center;
+    }
+    .stat .value { font-size: 15px; font-weight: 600; color: var(--accent); }
+    .stat .label { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    #cleanNow { width: 100%; padding: 10px; font-size: 14px; }
+    #result { text-align: center; min-height: 20px; margin-top: 8px; font-size: 12.5px; }
+    footer { margin-top: 8px; text-align: center; }
+    footer a { font-size: 12.5px; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="../icons/icon48.png" alt="">
+    <h1>CookieCleaner</h1>
+  </header>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="value" id="lastClean">—</div>
+      <div class="label" data-i18n="popupLastClean">Last cleanup</div>
+    </div>
+    <div class="stat">
+      <div class="value" id="nextClean">—</div>
+      <div class="label" data-i18n="popupNextClean">Next cleanup</div>
+    </div>
+    <div class="stat">
+      <div class="value" id="siteCount">—</div>
+      <div class="label" data-i18n="popupSites">Monitored sites</div>
+    </div>
+    <div class="stat">
+      <div class="value" id="lastCount">—</div>
+      <div class="label" data-i18n="popupCookiesRemoved">Cookies removed</div>
+    </div>
+  </div>
+
+  <button id="cleanNow" data-i18n="popupCleanNow">Clean now</button>
+  <div id="result"></div>
+
+  <footer>
+    <a href="#" id="openOptions" data-i18n="popupOptions">⚙️ Settings</a>
+  </footer>
+
+  <script src="../common/i18n.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>
