@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CookieCleaner — Privacy Policy</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <style>
+    :root {
+      --bg: #14161b; --panel: #1d2027; --border: #2e323d;
+      --text: #e8eaf0; --muted: #9aa1b0; --accent: #e0a458;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    body {
+      background: var(--bg); color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.7; padding: 40px 20px 80px;
+    }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    header { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+    header img { width: 40px; height: 40px; border-radius: 9px; }
+    h1 { font-size: 26px; }
+    h1 em { color: var(--accent); font-style: normal; }
+    h2 { font-size: 20px; margin: 34px 0 10px; color: var(--accent); }
+    h3 { font-size: 16px; margin: 20px 0 6px; }
+    p, li { color: var(--text); margin-bottom: 10px; }
+    ul { padding-left: 22px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    a { color: var(--accent); }
+    .card {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 18px 22px; margin: 16px 0;
+    }
+    hr { border: none; border-top: 1px solid var(--border); margin: 40px 0; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="assets/logo.png" alt="">
+      <h1>Cookie<em>Cleaner</em> — Privacy Policy</h1>
+    </header>
+    <p class="muted">Last updated: August 11, 2026 · <a href="#fr">Version française ci-dessous</a></p>
+
+    <div class="card">
+      <strong>Summary: CookieCleaner collects no data. At all.</strong><br>
+      No server, no account, no analytics, no telemetry. Everything stays in your browser.
+    </div>
+
+    <h2>Data collection</h2>
+    <p>CookieCleaner does not collect, store, transmit or sell any personal data or browsing data. The extension has no backend server and no analytics of any kind.</p>
+
+    <h2>Local storage</h2>
+    <p>Your settings (site list, whitelist, cleanup interval, language, cleanup log, and the optional Have I Been Pwned API key) are stored locally in your browser's extension storage. They never leave your device and are deleted when you uninstall the extension.</p>
+
+    <h2>Network requests</h2>
+    <p>The extension makes no network requests on its own. The only outgoing requests are the ones <strong>you</strong> explicitly trigger in the "Data breach check" section:</p>
+    <ul>
+      <li><strong>Password check</strong> — a request to <code>api.pwnedpasswords.com</code> using k-anonymity: only the first 5 characters of the SHA-1 hash of the password are sent. The password itself never leaves your device.</li>
+      <li><strong>Email check</strong> — only if you provide your own Have I Been Pwned API key, the email address you typed is sent directly to <code>haveibeenpwned.com</code> to query their breach database. It transits through no other server and is not stored by the extension.</li>
+    </ul>
+    <p>Both services are operated by <a href="https://haveibeenpwned.com/Privacy">Have I Been Pwned</a>, whose own privacy policy applies to those requests.</p>
+
+    <h2>Permissions</h2>
+    <p>The extension requests the <code>cookies</code>, <code>browsingData</code>, <code>alarms</code> and <code>storage</code> permissions, plus host access, for a single purpose: <strong>deleting</strong> the cookies and site data of the sites you choose, on the schedule you choose. Cookies and site data are never read for any other purpose, and never transmitted.</p>
+
+    <h2>Open source</h2>
+    <p>The complete, unminified source code is publicly auditable: <a href="https://github.com/FrankkDarko/CookieCleaner">github.com/FrankkDarko/CookieCleaner</a></p>
+
+    <h2>Contact</h2>
+    <p>Questions or concerns: <a href="https://github.com/FrankkDarko/CookieCleaner/issues">open an issue on GitHub</a>.</p>
+
+    <hr id="fr">
+
+    <header>
+      <img src="assets/logo.png" alt="">
+      <h1>Cookie<em>Cleaner</em> — Politique de confidentialité</h1>
+    </header>
+    <p class="muted">Dernière mise à jour : 11 août 2026</p>
+
+    <div class="card">
+      <strong>Résumé : CookieCleaner ne collecte aucune donnée. Aucune.</strong><br>
+      Pas de serveur, pas de compte, pas de statistiques, pas de télémétrie. Tout reste dans votre navigateur.
+    </div>
+
+    <h2>Collecte de données</h2>
+    <p>CookieCleaner ne collecte, ne stocke, ne transmet ni ne vend aucune donnée personnelle ou donnée de navigation. L'extension n'a aucun serveur et aucun outil d'analyse.</p>
+
+    <h2>Stockage local</h2>
+    <p>Vos réglages (liste de sites, liste blanche, fréquence, langue, journal des nettoyages et éventuelle clé API Have I Been Pwned) sont stockés localement dans le stockage d'extension de votre navigateur. Ils ne quittent jamais votre appareil et sont supprimés à la désinstallation.</p>
+
+    <h2>Requêtes réseau</h2>
+    <p>L'extension n'émet aucune requête réseau d'elle-même. Les seules requêtes sortantes sont celles que <strong>vous</strong> déclenchez explicitement dans la section « Vérification de fuites » :</p>
+    <ul>
+      <li><strong>Vérification de mot de passe</strong> — requête vers <code>api.pwnedpasswords.com</code> en k-anonymity : seuls les 5 premiers caractères du hash SHA-1 sont envoyés. Le mot de passe lui-même ne quitte jamais votre appareil.</li>
+      <li><strong>Vérification d'e-mail</strong> — uniquement si vous fournissez votre propre clé API Have I Been Pwned, l'adresse saisie est envoyée directement à <code>haveibeenpwned.com</code>. Elle ne transite par aucun autre serveur et n'est pas conservée par l'extension.</li>
+    </ul>
+
+    <h2>Permissions</h2>
+    <p>Les permissions <code>cookies</code>, <code>browsingData</code>, <code>alarms</code>, <code>storage</code> et l'accès aux hôtes servent un objectif unique : <strong>supprimer</strong> les cookies et données des sites que vous choisissez, à la fréquence que vous choisissez. Rien n'est lu à d'autres fins, rien n'est transmis.</p>
+
+    <h2>Open source</h2>
+    <p>Le code source complet et non minifié est auditable publiquement : <a href="https://github.com/FrankkDarko/CookieCleaner">github.com/FrankkDarko/CookieCleaner</a></p>
+
+    <h2>Contact</h2>
+    <p>Une question ? <a href="https://github.com/FrankkDarko/CookieCleaner/issues">Ouvrez une issue sur GitHub</a>.</p>
+  </div>
+</body>
+</html>

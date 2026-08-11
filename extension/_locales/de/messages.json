@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Löscht automatisch Cookies und Sitzungsdaten ausgewählter Websites, um die Auswirkungen von Cookie-Diebstahl-Malware zu begrenzen. Kostenlos, Open Source, keine Telemetrie." },
+  "extDescription": { "message": "Löscht automatisch Cookies und Sitzungen ausgewählter Websites, um Cookie-Diebstahl einzudämmen. Kostenlos, ohne Telemetrie." },
 
   "popupLastClean": { "message": "Letzte Bereinigung" },
   "popupNextClean": { "message": "Nächste Bereinigung" },

@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Automatically clears cookies and session data of chosen sites to limit the impact of cookie-stealing malware. Free, open-source, no telemetry." },
+  "extDescription": { "message": "Automatically clears cookies and sessions of chosen sites to limit cookie theft. Free, open-source, zero telemetry." },
 
   "popupLastClean": { "message": "Last cleanup" },
   "popupNextClean": { "message": "Next cleanup" },

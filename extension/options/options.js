@@ -90,7 +90,10 @@ function renderRevokeLinks() {
     (p) => p.revoke && p.domains.some((d) => cfg.sites.includes(d))
   );
   if (!relevant.length) {
-    el.innerHTML = `<span class="muted">${t("optRevokeNone") || "Add sites above to see their revocation pages."}</span>`;
+    const hint = document.createElement("span");
+    hint.className = "muted";
+    hint.textContent = t("optRevokeNone") || "Add sites above to see their revocation pages.";
+    el.appendChild(hint);
     return;
   }
   for (const p of relevant) {

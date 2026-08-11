@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Limpia automáticamente las cookies y los datos de sesión de los sitios que elijas para limitar el impacto del malware que roba cookies. Gratuito, de código abierto, sin telemetría." },
+  "extDescription": { "message": "Limpia automáticamente cookies y sesiones de los sitios que elijas para limitar el robo de cookies. Gratis, sin telemetría." },
 
   "popupLastClean": { "message": "Última limpieza" },
   "popupNextClean": { "message": "Próxima limpieza" },

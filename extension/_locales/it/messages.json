@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Pulisce automaticamente i cookie e i dati di sessione dei siti scelti per limitare l'impatto dei malware che rubano i cookie. Gratuito, open source, senza telemetria." },
+  "extDescription": { "message": "Pulisce automaticamente cookie e sessioni dei siti scelti per limitare il furto di cookie. Gratuito, senza telemetria." },
 
   "popupLastClean": { "message": "Ultima pulizia" },
   "popupNextClean": { "message": "Prossima pulizia" },

@@ -1,5 +1,5 @@
 {
-  "extDescription": { "message": "Nettoie automatiquement les cookies et données de session des sites de votre choix pour limiter l'impact des malwares voleurs de cookies. Gratuit, open-source, sans télémétrie." },
+  "extDescription": { "message": "Nettoie automatiquement les cookies et sessions de vos sites sensibles pour limiter le vol de cookies. Gratuit, sans télémétrie." },
 
   "popupLastClean": { "message": "Dernier nettoyage" },
   "popupNextClean": { "message": "Prochain nettoyage" },
