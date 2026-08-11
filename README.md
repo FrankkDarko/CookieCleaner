@@ -2,6 +2,8 @@
 
 <img src="assets/banner.png" alt="CookieCleaner — anti-vol de cookies" width="820">
 
+**🇫🇷 Français** · [🇬🇧 English](README.en.md) · [🌐 Site web](https://frankkdarko.github.io/CookieCleaner/)
+
 **Limitez l'impact du vol de cookies. Automatiquement.**
 
 Nettoie les cookies et données de session des sites de votre choix, à intervalle régulier —

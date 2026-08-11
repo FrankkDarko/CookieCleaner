@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CookieCleaner — Anti-vol de cookies</title>
+  <meta name="description" content="Extension gratuite et open-source qui nettoie automatiquement les cookies et sessions de vos sites sensibles pour limiter l'impact du vol de cookies.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <style>
+    :root {
+      --bg: #14161b; --panel: #1d2027; --panel-2: #23262f; --border: #2e323d;
+      --text: #e8eaf0; --muted: #9aa1b0; --accent: #e0a458; --accent-dark: #b5773a;
+      --green: #2f9e63; --red: #d05555; --radius: 14px;
+    }
+    * { box-sizing: border-box; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: linear-gradient(160deg, #1a1d26 0%, #14161b 40%);
+      color: var(--text);
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      font-size: 16px; line-height: 1.6;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+    nav {
+      display: flex; align-items: center; gap: 12px;
+      padding: 16px 0; border-bottom: 1px solid var(--border);
+    }
+    nav img { width: 34px; height: 34px; border-radius: 8px; }
+    nav .brand { font-weight: 700; font-size: 18px; }
+    nav .brand em { color: var(--accent); font-style: normal; }
+    nav .spacer { flex: 1; }
+    .lang-btn {
+      background: none; border: 1px solid var(--border); color: var(--muted);
+      border-radius: 8px; padding: 4px 10px; cursor: pointer; font-size: 14px;
+    }
+    .lang-btn.active { border-color: var(--accent); color: var(--accent); }
+    nav .gh {
+      text-decoration: none; border: 1px solid var(--border); border-radius: 8px;
+      padding: 4px 12px; color: var(--text); font-size: 14px;
+    }
+    nav .gh:hover { border-color: var(--accent); }
+
+    header.hero { text-align: center; padding: 64px 0 48px; }
+    .hero img { width: 120px; height: 120px; border-radius: 26px; box-shadow: 0 12px 40px rgba(0,0,0,.45); }
+    .hero h1 { font-size: 44px; margin: 24px 0 8px; }
+    .hero h1 em { color: var(--accent); font-style: normal; }
+    .hero .tagline { font-size: 20px; color: var(--muted); max-width: 620px; margin: 0 auto 28px; }
+    .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn {
+      display: inline-block; text-decoration: none; font-weight: 600; font-size: 16px;
+      padding: 12px 22px; border-radius: 10px;
+    }
+    .btn.primary { background: var(--accent); color: #1a1408; }
+    .btn.primary:hover { background: var(--accent-dark); color: #fff; }
+    .btn.ghost { border: 1px solid var(--border); color: var(--text); }
+    .btn.ghost:hover { border-color: var(--accent); }
+    .hero .note { margin-top: 14px; font-size: 13.5px; color: var(--muted); }
+
+    section { padding: 40px 0; }
+    section h2 { font-size: 26px; margin-bottom: 18px; text-align: center; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    .card {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px;
+    }
+    .card .emoji { font-size: 26px; }
+    .card h3 { font-size: 16.5px; margin: 8px 0 6px; }
+    .card p { font-size: 14.5px; color: var(--muted); }
+
+    .steps { counter-reset: step; }
+    .steps .card { position: relative; padding-left: 20px; }
+    .steps .card::before {
+      counter-increment: step; content: counter(step);
+      position: absolute; top: -12px; left: -6px;
+      background: var(--accent); color: #1a1408; font-weight: 700;
+      width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; font-size: 14px;
+    }
+
+    .warn-box {
+      background: rgba(208,85,85,.08); border: 1px solid rgba(208,85,85,.35);
+      border-radius: var(--radius); padding: 20px 24px; font-size: 15px;
+    }
+    .warn-box strong { color: var(--red); }
+
+    .install-cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+    .install-cols ol { padding-left: 20px; font-size: 14.5px; }
+    .install-cols li { margin: 6px 0; }
+    code {
+      background: var(--panel-2); border: 1px solid var(--border);
+      border-radius: 5px; padding: 1px 6px; font-size: 13px;
+    }
+
+    .privacy-strip {
+      text-align: center; background: var(--panel); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px; font-size: 15px;
+    }
+    .privacy-strip .badges { margin-top: 10px; display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .pill {
+      font-size: 13px; border: 1px solid var(--green); color: var(--green);
+      border-radius: 999px; padding: 3px 12px;
+    }
+
+    footer {
+      border-top: 1px solid var(--border); margin-top: 40px;
+      padding: 24px 0 40px; text-align: center; color: var(--muted); font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <img src="assets/logo.png" alt="">
+      <span class="brand">Cookie<em>Cleaner</em></span>
+      <span class="spacer"></span>
+      <button class="lang-btn" id="btn-fr" onclick="setLang('fr')">FR</button>
+      <button class="lang-btn" id="btn-en" onclick="setLang('en')">EN</button>
+      <a class="gh" href="https://github.com/FrankkDarko/CookieCleaner">GitHub</a>
+    </nav>
+
+    <header class="hero">
+      <img src="assets/logo.png" alt="CookieCleaner">
+      <h1>Cookie<em>Cleaner</em></h1>
+      <p class="tagline" data-t="tagline"></p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/FrankkDarko/CookieCleaner/releases" data-t="ctaDownload"></a>
+        <a class="btn ghost" href="https://github.com/FrankkDarko/CookieCleaner" data-t="ctaSource"></a>
+      </div>
+      <p class="note" data-t="ctaNote"></p>
+    </header>
+
+    <section>
+      <h2 data-t="threatTitle"></h2>
+      <div class="grid steps">
+        <div class="card"><h3 data-t="threat1t"></h3><p data-t="threat1p"></p></div>
+        <div class="card"><h3 data-t="threat2t"></h3><p data-t="threat2p"></p></div>
+        <div class="card"><h3 data-t="threat3t"></h3><p data-t="threat3p"></p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-t="featTitle"></h2>
+      <div class="grid">
+        <div class="card"><div class="emoji">🧹</div><h3 data-t="feat1t"></h3><p data-t="feat1p"></p></div>
+        <div class="card"><div class="emoji">🔐</div><h3 data-t="feat2t"></h3><p data-t="feat2p"></p></div>
+        <div class="card"><div class="emoji">⚡</div><h3 data-t="feat3t"></h3><p data-t="feat3p"></p></div>
+        <div class="card"><div class="emoji">🔗</div><h3 data-t="feat4t"></h3><p data-t="feat4p"></p></div>
+        <div class="card"><div class="emoji">🕵️</div><h3 data-t="feat5t"></h3><p data-t="feat5p"></p></div>
+        <div class="card"><div class="emoji">🌍</div><h3 data-t="feat6t"></h3><p data-t="feat6p"></p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="warn-box">
+        <strong data-t="honestT"></strong> <span data-t="honestP"></span>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-t="installTitle"></h2>
+      <div class="install-cols">
+        <div class="card">
+          <h3>Chrome / Edge / Brave / Opera</h3>
+          <ol>
+            <li data-t="instC1"></li>
+            <li data-t="instC2"></li>
+            <li data-t="instC3"></li>
+            <li data-t="instC4"></li>
+          </ol>
+        </div>
+        <div class="card">
+          <h3>Firefox</h3>
+          <ol>
+            <li data-t="instF1"></li>
+            <li data-t="instF2"></li>
+          </ol>
+          <p style="font-size:13.5px;color:var(--muted);margin-top:8px" data-t="instFNote"></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="privacy-strip">
+        <strong data-t="privT"></strong><br>
+        <span style="color:var(--muted)" data-t="privP"></span>
+        <div class="badges">
+          <span class="pill" data-t="pill1"></span>
+          <span class="pill" data-t="pill2"></span>
+          <span class="pill" data-t="pill3"></span>
+          <span class="pill" data-t="pill4"></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <span data-t="footer"></span>
+      <a href="https://github.com/FrankkDarko/CookieCleaner/blob/main/LICENSE">MIT</a>
+      · <a href="https://github.com/FrankkDarko/CookieCleaner/issues" data-t="footerIssues"></a>
+    </footer>
+  </div>
+
+  <script>
+    const I18N = {
+      fr: {
+        title: "CookieCleaner — Anti-vol de cookies",
+        tagline: "Extension gratuite et open-source qui nettoie automatiquement les cookies et sessions de vos sites sensibles — pour qu'un cookie volé devienne inutilisable en quelques heures.",
+        ctaDownload: "⬇ Télécharger", ctaSource: "Code source",
+        ctaNote: "Gratuit pour toujours · Chrome, Edge, Brave, Opera & Firefox",
+        threatTitle: "La menace : le vol de cookies",
+        threat1t: "Infection", threat1p: "Un malware « infostealer » s'exécute sur la machine (faux crack, pièce jointe, faux jeu…).",
+        threat2t: "Vol", threat2p: "Il copie et déchiffre les cookies du navigateur, ainsi que les tokens stockés en local (Discord…).",
+        threat3t: "Usurpation", threat3p: "L'attaquant injecte ces cookies chez lui : il est connecté à votre place, sans mot de passe et sans déclencher la 2FA.",
+        featTitle: "Ce que fait CookieCleaner",
+        feat1t: "Nettoyage automatique", feat1p: "Purge les cookies des sites choisis toutes les 30 min à 24 h, ou au démarrage du navigateur.",
+        feat2t: "Purge des tokens", feat2p: "Vide aussi le localStorage et l'IndexedDB — là où vivent les tokens type Discord que les nettoyeurs classiques oublient.",
+        feat3t: "Presets en un clic", feat3p: "Discord, Google, Steam, PayPal, Microsoft, réseaux sociaux… et deux modes : liste choisie ou tout-sauf-liste-blanche.",
+        feat4t: "Révocation serveur", feat4p: "Liens directs vers les pages officielles « appareils connectés » pour tuer les sessions côté serveur.",
+        feat5t: "Vérification de fuites", feat5p: "E-mail via Have I Been Pwned, mot de passe via l'API anonyme k-anonymity : rien ne quitte votre appareil.",
+        feat6t: "5 langues", feat6p: "Français, English, Español, Deutsch, Italiano — automatique ou au choix dans les options.",
+        honestT: "Soyons honnêtes :",
+        honestP: "CookieCleaner réduit la fenêtre d'exploitation d'un cookie volé, il n'empêche pas le vol. Si un malware est actif, il peut re-voler vos cookies à la prochaine connexion. Gardez votre système sain, activez la 2FA — et en cas d'infection, changez vos mots de passe depuis un autre appareil.",
+        installTitle: "Installation",
+        instC1: "Téléchargez le ZIP « chromium » depuis les Releases et décompressez-le",
+        instC2: "Ouvrez chrome://extensions et activez le Mode développeur",
+        instC3: "Cliquez « Charger l'extension non empaquetée »",
+        instC4: "Sélectionnez le dossier extension/",
+        instF1: "Téléchargez le fichier .xpi signé depuis les Releases",
+        instF2: "Ouvrez-le avec Firefox et confirmez l'installation",
+        instFNote: "Pensez à accorder la permission « Accéder à vos données pour tous les sites » dans les paramètres de l'extension.",
+        privT: "Votre vie privée n'est pas le produit.",
+        privP: "Aucun serveur, aucun compte, aucune statistique. Tout reste sur votre machine, et le code est auditable par tous.",
+        pill1: "✓ Open-source", pill2: "✓ Zéro télémétrie", pill3: "✓ Zéro serveur", pill4: "✓ Gratuit pour toujours",
+        footer: "CookieCleaner — licence ", footerIssues: "Signaler un problème"
+      },
+      en: {
+        title: "CookieCleaner — Anti cookie-theft",
+        tagline: "Free, open-source extension that automatically clears the cookies and sessions of your sensitive sites — so a stolen cookie becomes useless within hours.",
+        ctaDownload: "⬇ Download", ctaSource: "Source code",
+        ctaNote: "Free forever · Chrome, Edge, Brave, Opera & Firefox",
+        threatTitle: "The threat: cookie theft",
+        threat1t: "Infection", threat1p: "An “infostealer” malware runs on the machine (fake crack, attachment, fake game…).",
+        threat2t: "Theft", threat2p: "It copies and decrypts the browser cookies, plus locally stored tokens (Discord…).",
+        threat3t: "Impersonation", threat3p: "The attacker injects those cookies on his side: he is logged in as you, without a password and without triggering 2FA.",
+        featTitle: "What CookieCleaner does",
+        feat1t: "Automatic cleanup", feat1p: "Purges the cookies of chosen sites every 30 min to 24 h, or at browser startup.",
+        feat2t: "Token purge", feat2p: "Also wipes localStorage and IndexedDB — where Discord-style tokens live, which classic cleaners forget.",
+        feat3t: "One-click presets", feat3p: "Discord, Google, Steam, PayPal, Microsoft, social networks… and two modes: chosen list or everything-except-whitelist.",
+        feat4t: "Server-side revocation", feat4p: "Direct links to the official “connected devices” pages to kill sessions server-side.",
+        feat5t: "Breach check", feat5p: "Email via Have I Been Pwned, password via the anonymous k-anonymity API: nothing leaves your device.",
+        feat6t: "5 languages", feat6p: "Français, English, Español, Deutsch, Italiano — automatic or manually chosen in the settings.",
+        honestT: "Let's be honest:",
+        honestP: "CookieCleaner shrinks the exploitation window of a stolen cookie, it does not prevent the theft. If malware is active, it can steal your cookies again at your next login. Keep your system clean, enable 2FA — and if infected, change your passwords from another device.",
+        installTitle: "Installation",
+        instC1: "Download the “chromium” ZIP from the Releases and unzip it",
+        instC2: "Open chrome://extensions and enable Developer mode",
+        instC3: "Click “Load unpacked”",
+        instC4: "Select the extension/ folder",
+        instF1: "Download the signed .xpi file from the Releases",
+        instF2: "Open it with Firefox and confirm the installation",
+        instFNote: "Remember to grant the “Access your data for all websites” permission in the extension settings.",
+        privT: "Your privacy is not the product.",
+        privP: "No server, no account, no statistics. Everything stays on your machine, and the code can be audited by anyone.",
+        pill1: "✓ Open-source", pill2: "✓ Zero telemetry", pill3: "✓ Zero server", pill4: "✓ Free forever",
+        footer: "CookieCleaner — ", footerIssues: "Report an issue"
+      }
+    };
+
+    function setLang(lang) {
+      localStorage.setItem("cc-lang", lang);
+      document.documentElement.lang = lang;
+      document.title = I18N[lang].title;
+      document.querySelectorAll("[data-t]").forEach((el) => {
+        const msg = I18N[lang][el.dataset.t];
+        if (msg) el.textContent = msg;
+      });
+      document.getElementById("btn-fr").classList.toggle("active", lang === "fr");
+      document.getElementById("btn-en").classList.toggle("active", lang === "en");
+    }
+
+    setLang(
+      localStorage.getItem("cc-lang") ||
+      (navigator.language?.toLowerCase().startsWith("fr") ? "fr" : "en")
+    );
+  </script>
+</body>
+</html>
