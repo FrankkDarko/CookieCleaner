@@ -35,7 +35,7 @@ Un cookie volé n'est utile que **tant que la session est valide**. CookieCleane
 - 🔗 **Liens de révocation** : accès direct aux pages « appareils connectés » officielles pour tuer les sessions côté serveur
 - 🕵️ **Vérification de fuites** : e-mail via [Have I Been Pwned](https://haveibeenpwned.com), mot de passe via l'API anonyme *Pwned Passwords* (k-anonymity — le mot de passe ne quitte jamais votre appareil)
 - 📋 **Journal** des nettoyages
-- 🌍 Français + English
+- 🌍 5 langues (français, English, Español, Deutsch, Italiano) — automatique selon le navigateur, ou choix manuel dans les options
 - 🆓 **Gratuit pour toujours, open-source, zéro serveur, zéro télémétrie** — tout reste sur votre machine
 
 ## 📦 Installation
@@ -64,6 +64,11 @@ Firefox exige des extensions signées par Mozilla. Téléchargez le fichier `.xp
 4. C'est tout — le bouton **« Nettoyer maintenant »** du popup est là pour les nettoyages immédiats
 
 > 💡 À chaque nettoyage vous êtes **déconnecté** des sites concernés : c'est le principe. Choisissez une fréquence adaptée à votre usage (6 h est un bon compromis).
+
+## ❓ FAQ
+
+**Pourquoi l'adresse des pages de l'extension ressemble à `chrome-extension://cjfljdkma…/options.html` ?**
+C'est le fonctionnement normal de *toutes* les extensions : le navigateur attribue à chacune un identifiant unique (cette suite de lettres) et sert ses pages via le protocole `chrome-extension://` (ou `moz-extension://` sur Firefox). Ce n'est pas une adresse web — rien ne transite par internet, la page est chargée depuis votre disque. En mode développeur l'identifiant change d'une machine à l'autre ; une fois l'extension publiée sur les stores, il devient fixe et identique pour tout le monde.
 
 ## 🔒 Confidentialité
 

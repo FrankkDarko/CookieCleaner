@@ -12,6 +12,8 @@
   "popupError": { "message": "Error" },
 
   "optPageTitle": { "message": "CookieCleaner — Settings" },
+  "optLangTitle": { "message": "Language" },
+  "optLangAuto": { "message": "Auto (browser language)" },
   "optSubtitle": { "message": "Automatic cookie & session cleaner" },
   "optModeTitle": { "message": "Cleaning mode" },
   "optModeList": { "message": "Clean only the sites in my list" },

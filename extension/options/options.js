@@ -23,7 +23,7 @@ const PRESETS = [
 const DEFAULTS = {
   mode: "list", sites: [], whitelist: [],
   intervalMinutes: 360, cleanOnStartup: false, cleanStorage: true,
-  journal: [], hibpKey: ""
+  journal: [], hibpKey: "", lang: "auto"
 };
 
 let cfg = { ...DEFAULTS };
@@ -125,6 +125,7 @@ function renderJournal() {
 }
 
 function render() {
+  document.getElementById("langSelect").value = cfg.lang;
   document.querySelector(`input[name="mode"][value="${cfg.mode}"]`).checked = true;
   document.getElementById("sitesCard").style.display = cfg.mode === "list" ? "" : "none";
   document.getElementById("whitelistCard").style.display = cfg.mode === "all" ? "" : "none";
@@ -161,6 +162,10 @@ bindAdd("whitelistInput", "addWhitelist", "whitelist");
 
 /* ---------- settings handlers ---------- */
 
+document.getElementById("langSelect").addEventListener("change", async (e) => {
+  await save({ lang: e.target.value });
+  location.reload();
+});
 document.querySelectorAll('input[name="mode"]').forEach((r) =>
   r.addEventListener("change", async () => {
     await save({ mode: r.value });
@@ -279,6 +284,7 @@ document.getElementById("clearJournal").addEventListener("click", async () => {
 /* ---------- init ---------- */
 
 (async () => {
+  await i18nReady;
   cfg = await api.storage.local.get(DEFAULTS);
   render();
 })();

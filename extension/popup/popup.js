@@ -52,4 +52,4 @@ document.getElementById("openOptions").addEventListener("click", (e) => {
   api.runtime.openOptionsPage();
 });
 
-refresh();
+i18nReady.then(refresh);
