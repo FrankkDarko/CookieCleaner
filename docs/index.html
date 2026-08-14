@@ -125,7 +125,8 @@
       <h1>Cookie<em>Cleaner</em></h1>
       <p class="tagline" data-t="tagline"></p>
       <div class="cta-row">
-        <a class="btn primary" href="https://github.com/FrankkDarko/CookieCleaner/releases" data-t="ctaDownload"></a>
+        <a class="btn primary" href="https://addons.mozilla.org/firefox/addon/freecookiecleaner/" data-t="ctaFirefox"></a>
+        <a class="btn ghost" href="https://github.com/FrankkDarko/CookieCleaner/releases" data-t="ctaDownload"></a>
         <a class="btn ghost" href="https://github.com/FrankkDarko/CookieCleaner" data-t="ctaSource"></a>
       </div>
       <p class="note" data-t="ctaNote"></p>
@@ -171,11 +172,11 @@
           </ol>
         </div>
         <div class="card">
-          <h3>Firefox</h3>
-          <ol>
-            <li data-t="instF1"></li>
-            <li data-t="instF2"></li>
-          </ol>
+          <h3>Firefox <span style="color:var(--green);font-size:13px;font-weight:600" data-t="instFLive"></span></h3>
+          <p style="margin:12px 0 14px">
+            <a class="btn primary" href="https://addons.mozilla.org/firefox/addon/freecookiecleaner/" data-t="instFBtn"></a>
+          </p>
+          <p style="font-size:14px" data-t="instF0"></p>
           <p style="font-size:13.5px;color:var(--muted);margin-top:8px" data-t="instFNote"></p>
         </div>
       </div>
@@ -207,8 +208,9 @@
       fr: {
         title: "CookieCleaner — Anti-vol de cookies",
         tagline: "Extension gratuite et open-source qui nettoie automatiquement les cookies et sessions de vos sites sensibles — pour qu'un cookie volé devienne inutilisable en quelques heures.",
-        ctaDownload: "⬇ Télécharger", ctaSource: "Code source",
-        ctaNote: "Gratuit pour toujours · Chrome, Edge, Brave, Opera & Firefox",
+        ctaFirefox: "🦊 Installer pour Firefox",
+        ctaDownload: "⬇ ZIP pour Chrome", ctaSource: "Code source",
+        ctaNote: "Gratuit pour toujours · Firefox : disponible dès maintenant · Chrome Web Store : validation en cours",
         threatTitle: "La menace : le vol de cookies",
         threat1t: "Infection", threat1p: "Un malware « infostealer » s'exécute sur la machine (faux crack, pièce jointe, faux jeu…).",
         threat2t: "Vol", threat2p: "Il copie et déchiffre les cookies du navigateur, ainsi que les tokens stockés en local (Discord…).",
@@ -227,8 +229,9 @@
         instC2: "Ouvrez chrome://extensions et activez le Mode développeur",
         instC3: "Cliquez « Charger l'extension non empaquetée »",
         instC4: "Sélectionnez le dossier extension/",
-        instF1: "Téléchargez le fichier .xpi signé depuis les Releases",
-        instF2: "Ouvrez-le avec Firefox et confirmez l'installation",
+        instFLive: "✓ disponible sur le store",
+        instFBtn: "Ajouter à Firefox",
+        instF0: "Un clic depuis le store officiel de Mozilla — mises à jour automatiques incluses, compatible Firefox pour Android.",
         instFNote: "Pensez à accorder la permission « Accéder à vos données pour tous les sites » dans les paramètres de l'extension.",
         privT: "Votre vie privée n'est pas le produit.",
         privP: "Aucun serveur, aucun compte, aucune statistique. Tout reste sur votre machine, et le code est auditable par tous.",
@@ -238,8 +241,9 @@
       en: {
         title: "CookieCleaner — Anti cookie-theft",
         tagline: "Free, open-source extension that automatically clears the cookies and sessions of your sensitive sites — so a stolen cookie becomes useless within hours.",
-        ctaDownload: "⬇ Download", ctaSource: "Source code",
-        ctaNote: "Free forever · Chrome, Edge, Brave, Opera & Firefox",
+        ctaFirefox: "🦊 Get it for Firefox",
+        ctaDownload: "⬇ ZIP for Chrome", ctaSource: "Source code",
+        ctaNote: "Free forever · Firefox: available now · Chrome Web Store: under review",
         threatTitle: "The threat: cookie theft",
         threat1t: "Infection", threat1p: "An “infostealer” malware runs on the machine (fake crack, attachment, fake game…).",
         threat2t: "Theft", threat2p: "It copies and decrypts the browser cookies, plus locally stored tokens (Discord…).",
@@ -258,8 +262,9 @@
         instC2: "Open chrome://extensions and enable Developer mode",
         instC3: "Click “Load unpacked”",
         instC4: "Select the extension/ folder",
-        instF1: "Download the signed .xpi file from the Releases",
-        instF2: "Open it with Firefox and confirm the installation",
+        instFLive: "✓ available on the store",
+        instFBtn: "Add to Firefox",
+        instF0: "One click from Mozilla's official store — automatic updates included, Firefox for Android compatible.",
         instFNote: "Remember to grant the “Access your data for all websites” permission in the extension settings.",
         privT: "Your privacy is not the product.",
         privP: "No server, no account, no statistics. Everything stays on your machine, and the code can be audited by anyone.",
@@ -269,7 +274,7 @@
     };
 
     function setLang(lang) {
-      localStorage.setItem("cc-lang", lang);
+      try { localStorage.setItem("cc-lang", lang); } catch (e) { /* private mode / sandboxed */ }
       document.documentElement.lang = lang;
       document.title = I18N[lang].title;
       document.querySelectorAll("[data-t]").forEach((el) => {
@@ -280,10 +285,9 @@
       document.getElementById("btn-en").classList.toggle("active", lang === "en");
     }
 
-    setLang(
-      localStorage.getItem("cc-lang") ||
-      (navigator.language?.toLowerCase().startsWith("fr") ? "fr" : "en")
-    );
+    let saved = null;
+    try { saved = localStorage.getItem("cc-lang"); } catch (e) { /* private mode / sandboxed */ }
+    setLang(saved || (navigator.language?.toLowerCase().startsWith("fr") ? "fr" : "en"));
   </script>
 </body>
 </html>

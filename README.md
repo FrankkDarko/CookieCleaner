@@ -10,6 +10,7 @@ Nettoie les cookies et données de session des sites de votre choix, à interval
 pour qu'un cookie volé par un malware devienne inutilisable en quelques heures au lieu de plusieurs semaines.
 
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-green.svg)](LICENSE)
+[![Firefox Add-ons](https://img.shields.io/amo/v/freecookiecleaner?label=Firefox%20Add-ons&color=orange)](https://addons.mozilla.org/firefox/addon/freecookiecleaner/)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)
 ![Gratuit](https://img.shields.io/badge/prix-gratuit%20pour%20toujours-orange.svg)
 ![Aucune télémétrie](https://img.shields.io/badge/t%C3%A9l%C3%A9m%C3%A9trie-z%C3%A9ro-brightgreen.svg)
@@ -42,21 +43,21 @@ Un cookie volé n'est utile que **tant que la session est valide**. CookieCleane
 
 ## 📦 Installation
 
+### Firefox — ✅ disponible sur le store officiel
+
+**[➡️ Installer depuis addons.mozilla.org](https://addons.mozilla.org/firefox/addon/freecookiecleaner/)** — un clic, mises à jour automatiques, compatible Firefox pour Android.
+
+> ℹ️ Sur Firefox, pensez à accorder la permission « Accéder à vos données pour tous les sites » dans les paramètres de l'extension, sinon le nettoyage ne verra pas tous les cookies.
+
 ### Chrome / Edge / Brave / Opera
 
-*En attendant la publication sur le Chrome Web Store :*
+*En attente de validation sur le Chrome Web Store — en attendant, installation manuelle :*
 
 1. Téléchargez le ZIP `chromium` depuis les [Releases](../../releases) (ou clonez ce repo)
 2. Décompressez-le
 3. Ouvrez `chrome://extensions` (ou `edge://extensions`, `opera://extensions`)
 4. Activez le **Mode développeur** (en haut à droite)
 5. Cliquez **« Charger l'extension non empaquetée »** et sélectionnez le dossier `extension/`
-
-### Firefox
-
-Firefox exige des extensions signées par Mozilla. Téléchargez le fichier `.xpi` signé depuis les [Releases](../../releases) et ouvrez-le avec Firefox — c'est tout.
-
-> ℹ️ Sur Firefox, pensez à accorder la permission « Accéder à vos données pour tous les sites » dans les paramètres de l'extension, sinon le nettoyage ne verra pas tous les cookies.
 
 ## 🚀 Utilisation
 
@@ -102,7 +103,8 @@ powershell -File scripts/build.ps1
 - [x] Nettoyage périodique par liste de sites / tout-sauf-liste-blanche
 - [x] Purge localStorage + IndexedDB
 - [x] Vérification de fuites (HIBP)
-- [ ] Publication Chrome Web Store + addons.mozilla.org
+- [x] Publication sur addons.mozilla.org (Firefox) ✅
+- [ ] Publication Chrome Web Store (validation en cours)
 - [ ] Notification discrète après nettoyage (opt-in)
 - [ ] Score d'hygiène (cookies tiers, sessions anciennes…)
 - [ ] Guide « Que faire si je suis infecté ? »

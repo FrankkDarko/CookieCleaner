@@ -10,6 +10,7 @@ Clears cookies and session data of the sites you choose, at regular intervals �
 so a cookie stolen by malware becomes useless within hours instead of weeks.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Firefox Add-ons](https://img.shields.io/amo/v/freecookiecleaner?label=Firefox%20Add-ons&color=orange)](https://addons.mozilla.org/firefox/addon/freecookiecleaner/)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)
 ![Free](https://img.shields.io/badge/price-free%20forever-orange.svg)
 ![No telemetry](https://img.shields.io/badge/telemetry-zero-brightgreen.svg)
@@ -42,21 +43,21 @@ A stolen cookie is only useful **while the session is valid**. CookieCleaner reg
 
 ## 📦 Installation
 
+### Firefox — ✅ available on the official store
+
+**[➡️ Install from addons.mozilla.org](https://addons.mozilla.org/firefox/addon/freecookiecleaner/)** — one click, automatic updates, Firefox for Android compatible.
+
+> ℹ️ On Firefox, remember to grant the "Access your data for all websites" permission in the extension settings, otherwise the cleanup won't see all cookies.
+
 ### Chrome / Edge / Brave / Opera
 
-*While waiting for the Chrome Web Store release:*
+*Chrome Web Store review in progress — manual install in the meantime:*
 
 1. Download the `chromium` ZIP from the [Releases](../../releases) (or clone this repo)
 2. Unzip it
 3. Open `chrome://extensions` (or `edge://extensions`, `opera://extensions`)
 4. Enable **Developer mode** (top right)
 5. Click **"Load unpacked"** and select the `extension/` folder
-
-### Firefox
-
-Firefox requires extensions signed by Mozilla. Download the signed `.xpi` file from the [Releases](../../releases) and open it with Firefox — that's it.
-
-> ℹ️ On Firefox, remember to grant the "Access your data for all websites" permission in the extension settings, otherwise the cleanup won't see all cookies.
 
 ## 🚀 Usage
 
@@ -102,7 +103,8 @@ powershell -File scripts/build.ps1
 - [x] Periodic cleanup by site list / everything-except-whitelist
 - [x] localStorage + IndexedDB purge
 - [x] Breach check (HIBP)
-- [ ] Chrome Web Store + addons.mozilla.org release
+- [x] Published on addons.mozilla.org (Firefox) ✅
+- [ ] Chrome Web Store release (under review)
 - [ ] Discreet notification after cleanup (opt-in)
 - [ ] Hygiene score (third-party cookies, old sessions…)
 - [ ] "What to do if I'm infected?" guide
