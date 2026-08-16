@@ -10,6 +10,7 @@ Nettoie les cookies et données de session des sites de votre choix, à interval
 pour qu'un cookie volé par un malware devienne inutilisable en quelques heures au lieu de plusieurs semaines.
 
 [![Licence MIT](https://img.shields.io/badge/licence-MIT-green.svg)](LICENSE)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/oaomdnagofhaododcaihlojmjmlnnhdg?label=Chrome%20Web%20Store&color=blue)](https://chromewebstore.google.com/detail/cookiecleaner/oaomdnagofhaododcaihlojmjmlnnhdg)
 [![Firefox Add-ons](https://img.shields.io/amo/v/freecookiecleaner?label=Firefox%20Add-ons&color=orange)](https://addons.mozilla.org/firefox/addon/freecookiecleaner/)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)
 ![Gratuit](https://img.shields.io/badge/prix-gratuit%20pour%20toujours-orange.svg)
@@ -49,15 +50,17 @@ Un cookie volé n'est utile que **tant que la session est valide**. CookieCleane
 
 > ℹ️ Sur Firefox, pensez à accorder la permission « Accéder à vos données pour tous les sites » dans les paramètres de l'extension, sinon le nettoyage ne verra pas tous les cookies.
 
-### Chrome / Edge / Brave / Opera
+### Chrome / Edge / Brave / Opera — ✅ disponible sur le store officiel
 
-*En attente de validation sur le Chrome Web Store — en attendant, installation manuelle :*
+**[➡️ Installer depuis le Chrome Web Store](https://chromewebstore.google.com/detail/cookiecleaner/oaomdnagofhaododcaihlojmjmlnnhdg)** — un clic, mises à jour automatiques. Edge, Brave et Opera peuvent installer directement depuis le Chrome Web Store.
+
+<details>
+<summary>Installation manuelle (utilisateurs avancés)</summary>
 
 1. Téléchargez le ZIP `chromium` depuis les [Releases](../../releases) (ou clonez ce repo)
-2. Décompressez-le
-3. Ouvrez `chrome://extensions` (ou `edge://extensions`, `opera://extensions`)
-4. Activez le **Mode développeur** (en haut à droite)
-5. Cliquez **« Charger l'extension non empaquetée »** et sélectionnez le dossier `extension/`
+2. Décompressez-le, ouvrez `chrome://extensions`, activez le **Mode développeur**
+3. Cliquez **« Charger l'extension non empaquetée »** et sélectionnez le dossier `extension/`
+</details>
 
 ## 🚀 Utilisation
 
@@ -104,7 +107,7 @@ powershell -File scripts/build.ps1
 - [x] Purge localStorage + IndexedDB
 - [x] Vérification de fuites (HIBP)
 - [x] Publication sur addons.mozilla.org (Firefox) ✅
-- [ ] Publication Chrome Web Store (validation en cours)
+- [x] Publication sur le Chrome Web Store ✅
 - [ ] Notification discrète après nettoyage (opt-in)
 - [ ] Score d'hygiène (cookies tiers, sessions anciennes…)
 - [ ] Guide « Que faire si je suis infecté ? »

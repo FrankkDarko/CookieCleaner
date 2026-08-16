@@ -10,6 +10,7 @@ Clears cookies and session data of the sites you choose, at regular intervals �
 so a cookie stolen by malware becomes useless within hours instead of weeks.
 
 [![MIT License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/oaomdnagofhaododcaihlojmjmlnnhdg?label=Chrome%20Web%20Store&color=blue)](https://chromewebstore.google.com/detail/cookiecleaner/oaomdnagofhaododcaihlojmjmlnnhdg)
 [![Firefox Add-ons](https://img.shields.io/amo/v/freecookiecleaner?label=Firefox%20Add-ons&color=orange)](https://addons.mozilla.org/firefox/addon/freecookiecleaner/)
 ![Manifest V3](https://img.shields.io/badge/Manifest-V3-blue.svg)
 ![Free](https://img.shields.io/badge/price-free%20forever-orange.svg)
@@ -49,15 +50,17 @@ A stolen cookie is only useful **while the session is valid**. CookieCleaner reg
 
 > ℹ️ On Firefox, remember to grant the "Access your data for all websites" permission in the extension settings, otherwise the cleanup won't see all cookies.
 
-### Chrome / Edge / Brave / Opera
+### Chrome / Edge / Brave / Opera — ✅ available on the official store
 
-*Chrome Web Store review in progress — manual install in the meantime:*
+**[➡️ Install from the Chrome Web Store](https://chromewebstore.google.com/detail/cookiecleaner/oaomdnagofhaododcaihlojmjmlnnhdg)** — one click, automatic updates. Edge, Brave and Opera can install straight from the Chrome Web Store.
+
+<details>
+<summary>Manual install (advanced users)</summary>
 
 1. Download the `chromium` ZIP from the [Releases](../../releases) (or clone this repo)
-2. Unzip it
-3. Open `chrome://extensions` (or `edge://extensions`, `opera://extensions`)
-4. Enable **Developer mode** (top right)
-5. Click **"Load unpacked"** and select the `extension/` folder
+2. Unzip it, open `chrome://extensions`, enable **Developer mode**
+3. Click **"Load unpacked"** and select the `extension/` folder
+</details>
 
 ## 🚀 Usage
 
@@ -104,7 +107,7 @@ powershell -File scripts/build.ps1
 - [x] localStorage + IndexedDB purge
 - [x] Breach check (HIBP)
 - [x] Published on addons.mozilla.org (Firefox) ✅
-- [ ] Chrome Web Store release (under review)
+- [x] Published on the Chrome Web Store ✅
 - [ ] Discreet notification after cleanup (opt-in)
 - [ ] Hygiene score (third-party cookies, old sessions…)
 - [ ] "What to do if I'm infected?" guide
